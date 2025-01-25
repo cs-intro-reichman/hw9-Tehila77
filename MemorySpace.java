@@ -92,8 +92,22 @@ blockIterator.length= blockIterator.length-length;
 	 *            the starting address of the block to freeList
 	 */
 	public void free(int address) {
-		//// Write your code here
+	if(allocatedList.getSize()==0){
+	throw new IllegalArgumentException(
+					"index must be between 0 and size");
 	}
+	Node currect=allocatedList.getFirst();
+	while (currect!=null) {
+		MemoryBlock allocateBook=currect.block;
+		if(allocateBook.baseAddress==address){
+			allocatedList.remove(currect);
+			freeList.addLast(allocateBook);
+			return;
+		}currect=currect.next;
+	}
+}
+
+
 	
 	/**
 	 * A textual representation of the free list and the allocated list of this memory space, 
