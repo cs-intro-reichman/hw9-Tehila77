@@ -123,6 +123,31 @@ blockIterator.length= blockIterator.length-length;
 	 * In this implementation Malloc does not call defrag.
 	 */
 	public void defrag() {
-		//// Write your code here
+		if (freeList.getFirst()==null)return;
+		ListIterator iterator1= new ListIterator(freeList.getFirst());
+		while (iterator1.hasNext()) {
+			MemoryBlock block1=iterator1.current.block;
+			ListIterator iterator2= new ListIterator(freeList.getFirst());
+			while (iterator1.hasNext()) {
+				MemoryBlock block2=iterator2.current.block;
+			
+			if(block1!= block2){
+				if(block1.baseAddress+block1.length== block2.baseAddress){
+					block1.length=block1.length+block2.length;
+					freeList.remove(iterator2.current);
+					iterator2=new ListIterator(freeList.getFirst());
+				}
+				else if(block2.baseAddress+block2.length== block1.baseAddress){
+					block2.length=block2.length+block1.length;
+					freeList.remove(iterator2.current);
+					iterator1=new ListIterator(freeList.getFirst());
+
+				}
+			}
+			iterator2.hasNext();
+		}
+		iterator1.hasNext();
+		}
+
 	}
 }
