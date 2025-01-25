@@ -1,3 +1,5 @@
+import java.util.Iterator;
+
 /**
  * Represents a managed memory space. The memory space manages a list of allocated 
  * memory blocks, and a list free memory blocks. The methods "malloc" and "free" are 
@@ -58,7 +60,26 @@ public class MemorySpace {
 	 * @return the base address of the allocated block, or -1 if unable to allocate
 	 */
 	public int malloc(int length) {		
-		//// Replace the following statement with your code
+		ListIterator bIterator= new ListIterator(freeList.getFirst());
+while (bIterator.hasNext()) {
+	MemoryBlock blockIterator =bIterator.current.block;
+if(blockIterator.length>= length){
+	int index=blockIterator.baseAddress;
+	MemoryBlock  alloBlock =new MemoryBlock (index,length);
+	allocatedList.addLast(alloBlock);
+	if(blockIterator.length== length){
+		freeList.remove(blockIterator);
+		}else{
+
+index= index+length;
+blockIterator.length= blockIterator.length-length;
+		}
+		return index;
+	}
+	bIterator.next();
+
+}
+	
 		return -1;
 	}
 
