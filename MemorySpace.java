@@ -128,7 +128,7 @@ public class MemorySpace {
 		while (iterator1.hasNext()) {
 			MemoryBlock block1=iterator1.current.block;
 			ListIterator iterator2= new ListIterator(freeList.getFirst());
-			while (iterator1.hasNext()) {
+			while (iterator2.hasNext()) {
 				MemoryBlock block2=iterator2.current.block;
 			
 			if(block1!= block2){

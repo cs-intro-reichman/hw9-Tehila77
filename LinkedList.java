@@ -250,7 +250,7 @@ public class LinkedList {
 		}
 		if (index==0){
 			this.first=this.first.next;
-			if(first==null){
+			if(this.first==null){
 			this.last=null;
 			}
 			size--;
@@ -283,13 +283,14 @@ public class LinkedList {
 					"index must be between 0 and size");
 		}
 		Node currect=this.first;
+		Node prev=null;
 		if (currect.block.equals(block)) {
 			if(this.first==null){
 				this.last=null;
 			this.size--;
 			return;
 		}
-		Node prev=null;
+		
 	while (currect!= null && !currect.block.equals(block)) {
 		prev=currect;
 		currect=currect.next;
@@ -300,7 +301,7 @@ public class LinkedList {
 	}
 	prev.next= currect.next;
 	if(currect== this.last){
-		last=prev;
+		this.last=prev;
 	}
 	this.size--;
 	}
