@@ -253,7 +253,7 @@ public class LinkedList {
 			if(this.first==null){
 			this.last=null;
 			}
-			size--;
+			this.size--;
 			return;
 		}
 		Node currect=this.first;
@@ -285,6 +285,7 @@ public class LinkedList {
 		Node currect=this.first;
 		Node prev=null;
 		if (currect.block.equals(block)) {
+			this.first=this.first.next;
 			if(this.first==null){
 				this.last=null;
 			this.size--;
