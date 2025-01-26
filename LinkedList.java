@@ -172,6 +172,8 @@ public class LinkedList {
 	public boolean contains (MemoryBlock memo) {
 		return this.contains(memo, this.first);
 		}
+
+
 	private boolean contains (MemoryBlock memo, Node current) {
 		if (current == null){
 		return false;
@@ -181,12 +183,16 @@ public class LinkedList {
 		}
 		return this.contains(memo, current.next);
 		}
+
+
 	public int indexOf(MemoryBlock block) {
 		if (!this.contains(block)) {
 			return -1;
 			}
 			return this.indexOf(block, this.first);
 			}
+
+
 	private int indexOf (MemoryBlock block, Node current){
 		if (current.block.equals(block)){
 		return 0;
@@ -225,8 +231,8 @@ public class LinkedList {
 					"index must be between 0 and size");
 		}
 		prev.next=currect.next;
-		if(currect==last){
-			last=prev;
+		if(currect==this.last){
+			this.last=prev;
 		}
        this.size--;
 
@@ -240,12 +246,12 @@ public class LinkedList {
 	 *         if index is negative or greater than or equal to size
 	 */
 	public void remove(int index) {
-		if (index < 0 || index >= size ||first==null) {
+		if (index < 0 || index >= size ||this.first==null) {
 			throw new IllegalArgumentException(
 					"index must be between 0 and size");
 		}
 		if (index==0){
-			first=null;
+			this.first=this.first.next;
 			if(first==null)last=first;
 			size--;
 			return;
