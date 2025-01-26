@@ -60,9 +60,9 @@ public class MemorySpace {
 	 * @return the base address of the allocated block, or -1 if unable to allocate
 	 */
 	public int malloc(int length) {		
-	ListIterator Iterator= new ListIterator(freeList.getFirst());
-    while (Iterator.hasNext()) {
-	MemoryBlock blockIterator =Iterator.current.block;
+	ListIterator iterator= new ListIterator(freeList.getFirst());
+    while (iterator.hasNext()) {
+	MemoryBlock blockIterator =iterator.current.block;
     if(blockIterator.length>= length){
 	    int Adres=blockIterator.baseAddress;
 	    MemoryBlock  alloBlock =new MemoryBlock (Adres,length);
@@ -75,7 +75,7 @@ public class MemorySpace {
 		   }
 		   return Adres;
 	       }
-	    Iterator.next();
+	    iterator.next();
 	   }
 		return -1;
 	}
