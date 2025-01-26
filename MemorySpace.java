@@ -60,26 +60,23 @@ public class MemorySpace {
 	 * @return the base address of the allocated block, or -1 if unable to allocate
 	 */
 	public int malloc(int length) {		
-		ListIterator bIterator= new ListIterator(freeList.getFirst());
-while (bIterator.hasNext()) {
-	MemoryBlock blockIterator =bIterator.current.block;
-if(blockIterator.length>= length){
-	int index=blockIterator.baseAddress;
-	MemoryBlock  alloBlock =new MemoryBlock (index,length);
-	allocatedList.addLast(alloBlock);
-	if(blockIterator.length== length){
-		freeList.remove(blockIterator);
-		}else{
-
-index= index+length;
-blockIterator.length= blockIterator.length-length;
-		}
-		return index;
-	}
-	bIterator.next();
-
-}
-	
+		ListIterator Iterator= new ListIterator(freeList.getFirst());
+    while (Iterator.hasNext()) {
+	MemoryBlock blockIterator =Iterator.current.block;
+    if(blockIterator.length>= length){
+	    int Adres=blockIterator.baseAddress;
+	    MemoryBlock  alloBlock =new MemoryBlock (Adres,length);
+	   allocatedList.addLast(alloBlock);
+	       if(blockIterator.length== length){
+		   freeList.remove(blockIterator);
+		   } else {
+	       blockIterator.length= blockIterator.length+length;
+            blockIterator.length= blockIterator.length-length;
+		   }
+		   return Adres;
+	       }
+	    Iterator.next();
+	   }
 		return -1;
 	}
 
@@ -103,7 +100,8 @@ blockIterator.length= blockIterator.length-length;
 			allocatedList.remove(currect);
 			freeList.addLast(allocateBook);
 			return;
-		}currect=currect.next;
+		}
+		currect=currect.next;
 	}
 }
 
@@ -144,9 +142,9 @@ blockIterator.length= blockIterator.length-length;
 
 				}
 			}
-			iterator2.hasNext();
+			iterator2.next();
 		}
-		iterator1.hasNext();
+		iterator1.next();
 		}
 
 	}

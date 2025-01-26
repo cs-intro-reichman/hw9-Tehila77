@@ -220,10 +220,13 @@ public class LinkedList {
 			currect=currect.next;
 			
 		}
-		if(currect==this.last){
-			this.last= prev;
-		}else{
-			prev.next=currect.next;
+		if(currect==null){
+			throw new IllegalArgumentException(
+					"index must be between 0 and size");
+		}
+		prev.next=currect.next;
+		if(currect==last){
+			last=prev;
 		}
        this.size--;
 
