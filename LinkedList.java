@@ -207,11 +207,11 @@ public class LinkedList {
 	 *        the node that will be removed from this list
 	 */
 	public void remove(Node node) {
-		if (node == null|| first==null) {
+		if (node == null|| this.first==null) {
 			throw new IllegalArgumentException(
 					"index must be between 0 and size");
 		}
-		if(node== this.first){
+		if(this.first== null){
 			this.first=this.first.next;
 			if(this.first==null){
 				this.last=null;
@@ -227,7 +227,7 @@ public class LinkedList {
 			
 		}
 		if(currect==null){
-			throw new IllegalArgumentException(
+			throw new NumberFormatException(
 					"index must be between 0 and size");
 		}
 		prev.next=currect.next;
@@ -252,7 +252,9 @@ public class LinkedList {
 		}
 		if (index==0){
 			this.first=this.first.next;
-			if(first==null)last=first;
+			if(first==null){
+			last=first;
+			}
 			size--;
 			return;
 		}
@@ -265,13 +267,9 @@ public class LinkedList {
 		}
 		prev.next=currect.next;
 		if(currect== this.last){
-			last=prev;
+			this.last=prev;
 		}
 		size--;
-
-
-
-
 	}
 
 	/**
@@ -303,13 +301,10 @@ public class LinkedList {
 		throw new IllegalArgumentException(
 			"index must be between 0 and size");
 	}
-	if(currect==first){
+	if(currect== this.last){
 		last=prev;
 	}
 	size--;
-
-
-
 	}	
 
 	/**
