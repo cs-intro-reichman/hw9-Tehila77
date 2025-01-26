@@ -208,15 +208,14 @@ public class LinkedList {
 	 */
 	public void remove(Node node) {
 		if (node == null|| this.first==null) {
-			throw new IllegalArgumentException(
-					"index must be between 0 and size");
+		 throw new NullPointerException("index must be between 0 and size");
 		}
-		if(this.first== null){
+		if(this.first==node){
 			this.first=this.first.next;
 			if(this.first==null){
 				this.last=null;
 			}
-			size--;
+			this.size--;
 			return;
 		}
 		Node currect=first;
@@ -227,8 +226,7 @@ public class LinkedList {
 			
 		}
 		if(currect==null){
-			throw new NumberFormatException(
-					"index must be between 0 and size");
+			throw new NullPointerException("index must be between 0 and size");
 		}
 		prev.next=currect.next;
 		if(currect==this.last){
@@ -246,14 +244,14 @@ public class LinkedList {
 	 *         if index is negative or greater than or equal to size
 	 */
 	public void remove(int index) {
-		if (index < 0 || index >= size ||this.first==null) {
+		if (index < 0 || index >= this.size ||this.first==null) {
 			throw new IllegalArgumentException(
 					"index must be between 0 and size");
 		}
 		if (index==0){
 			this.first=this.first.next;
 			if(first==null){
-			last=first;
+			last=null;
 			}
 			size--;
 			return;
@@ -292,7 +290,6 @@ public class LinkedList {
 			size--;
 			return;
 		}
-	}
 	while (currect!= null && !currect.block.equals(block)) {
 		prev=currect;
 		currect=currect.next;
@@ -301,11 +298,13 @@ public class LinkedList {
 		throw new IllegalArgumentException(
 			"index must be between 0 and size");
 	}
+	prev.next= currect.next;
 	if(currect== this.last){
 		last=prev;
 	}
 	size--;
-	}	
+	}
+}	
 
 	/**
 	 * Returns an iterator over this list, starting with the first element.
