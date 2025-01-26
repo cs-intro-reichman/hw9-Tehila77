@@ -223,7 +223,6 @@ public class LinkedList {
 		while (currect!= null && currect!= node) {
 			prev=currect;
 			currect=currect.next;
-			
 		}
 		if(currect==null){
 			throw new NullPointerException("index must be between 0 and size");
@@ -288,10 +287,10 @@ public class LinkedList {
 			this.first=this.first.next;
 			if(this.first==null){
 				this.last=null;
+			}
 			this.size--;
 			return;
 		}
-		
 	while (currect!= null && !currect.block.equals(block)) {
 		prev=currect;
 		currect=currect.next;
@@ -306,7 +305,6 @@ public class LinkedList {
 	}
 	this.size--;
 	}
-}	
 
 	/**
 	 * Returns an iterator over this list, starting with the first element.
