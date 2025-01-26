@@ -251,7 +251,7 @@ public class LinkedList {
 		if (index==0){
 			this.first=this.first.next;
 			if(first==null){
-			last=null;
+			this.last=null;
 			}
 			size--;
 			return;
@@ -267,7 +267,7 @@ public class LinkedList {
 		if(currect== this.last){
 			this.last=prev;
 		}
-		size--;
+		this.size--;
 	}
 
 	/**
@@ -278,18 +278,18 @@ public class LinkedList {
 	 *         if the given memory block is not in this list
 	 */
 	public void remove(MemoryBlock block) {
-		if (block== null || first==null) {
+		if (block== null || this.first==null) {
 			throw new IllegalArgumentException(
 					"index must be between 0 and size");
 		}
 		Node currect=this.first;
-		Node prev=null;
 		if (currect.block.equals(block)) {
-			if(first==null){
-				last=first;
-			size--;
+			if(this.first==null){
+				this.last=null;
+			this.size--;
 			return;
 		}
+		Node prev=null;
 	while (currect!= null && !currect.block.equals(block)) {
 		prev=currect;
 		currect=currect.next;
@@ -302,7 +302,7 @@ public class LinkedList {
 	if(currect== this.last){
 		last=prev;
 	}
-	size--;
+	this.size--;
 	}
 }	
 
