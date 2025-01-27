@@ -320,7 +320,7 @@ public class LinkedList {
 		Node currect= this.first;
 		String str="";
 	while (currect!=null) {
-			str=str +currect.block.toString()+ "";
+			str=str +currect.block.toString()+ " ";
 			currect=currect.next;
 
 			
