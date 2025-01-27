@@ -70,8 +70,8 @@ public class MemorySpace {
 	       if(blockIterator.length== length){
 		   freeList.remove(blockIterator);
 		   } else {
-	       blockIterator.baseAddress= blockIterator.baseAddress+length;
-            blockIterator.length= blockIterator.length-length;
+	       blockIterator.baseAddress+=length;
+            blockIterator.length-= length;
 		   }
 		   return Adres;
 	       }
@@ -130,10 +130,9 @@ public class MemorySpace {
 			ListIterator iterator2= new ListIterator(freeList.getFirst());
 			while (iterator2.hasNext()) {
 				MemoryBlock block2=iterator2.current.block;
-			
 			if(block1!= block2){
 				if(block1.baseAddress+block1.length== block2.baseAddress){
-					block1.length=block1.length+block2.length;
+					block1.length+=block2.length;
 					freeList.remove(iterator2.current);
 					iterator2=new ListIterator(freeList.getFirst());
 				}
@@ -141,7 +140,7 @@ public class MemorySpace {
 					block2.length=block2.length+block1.length;
 					freeList.remove(iterator2.current);
 					iterator1=new ListIterator(freeList.getFirst());
-
+                  break;
 				}
 			}
 			iterator2.next();
